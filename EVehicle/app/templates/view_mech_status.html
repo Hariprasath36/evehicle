@@ -1,0 +1,51 @@
+{% include 'public_header.html' %}
+
+<div class="table-responsive table-responsive-data2">
+    <table class="table table-data2">
+        <thead>
+            <tr>
+                <th>Company Name</th>
+                <th>Mechanic Name</th>
+                <th>Phone Number</th>
+                <th>Status</th>
+                <th>Payment Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for form in ids %}
+            <tr class="tr-shadow">
+                <td>
+                    <span class= " status--process"> {{ form.company_id.company_name }} </span> <br>
+                </td>
+                <td class="desc">{{ form.worker_id.username }}</td>
+                                <td>
+                    <span> {{ form.company_id.phone_number}} </span>
+                </td> 
+                <td>
+                    {% if form.status == 'send' %}
+                    <div class="table-data-feature">
+                       <a href="{% url 'update_work_status' pk=form.id %}" class="btn btn-success"> Update Status 
+                        </a>
+                        {% elif form.status == 'pending' %}
+                        <input type="submit" class="btn btn-danger disabled" value="Not Finished">
+                    {% elif form.status == 'finish' %}
+                        <input type="submit" class="btn btn-warning disabled" value="Finished Work">
+                    {% endif %}
+                </td>                                               
+                <td>
+                  {% if form.payment == '' %}
+                        <span style="color: orange;">Waiting for Payment</span>
+                    {% elif form.payment == 'paid' %}
+                         <span style="color: green;">Paid</span>
+                    {% elif form.payment == 'notpaid' %}
+                         <span style="color: red;">Not Paid</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% empty %}
+            <tr class=" alert alert-danger "> No Query </tr>
+            {% endfor %} 
+        </tbody>
+    </table>
+</div>
+{% include 'footer.html' %}

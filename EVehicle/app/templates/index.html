@@ -1,0 +1,140 @@
+{% load static %}
+		<!DOCTYPE html>
+
+		<html>
+
+			<head>
+
+				<title>EVehicle</title>
+				<meta name="keywords" content="" />
+				<meta name="description" content="" />		
+
+				<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+				<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+				<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700italic,700,900&amp;subset=latin,latin-ext">
+				<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=PT+Serif:700italic,700,400italic&amp;subset=latin,cyrillic-ext,latin-ext,cyrillic">
+				
+				<link rel="stylesheet" type="text/css" href="{% static 'style/jquery.qtip.css'%}"/>
+				<link rel="stylesheet" type="text/css" href="{% static 'style/jquery-ui.min.css' %}"/>
+				<link rel="stylesheet" type="text/css" href="{% static 'style/superfish.css' %}"/>
+				<link rel="stylesheet" type="text/css" href="{% static 'style/flexnav.css' %}"/>
+				<link rel="stylesheet" type="text/css" href="{% static 'style/DateTimePicker.min.css' %}"/>
+				<link rel="stylesheet" type="text/css" href="{% static 'style/fancybox/jquery.fancybox.css' %}"/> 
+				<link rel="stylesheet" type="text/css" href="{% static 'style/fancybox/helpers/jquery.fancybox-buttons.css' %}"/>
+				<link rel="stylesheet" type="text/css" href="{% static 'style/revolution/layers.css' %}"/> 
+				<link rel="stylesheet" type="text/css" href="{% static 'style/revolution/settings.css' %}"/> 
+				<link rel="stylesheet" type="text/css" href="{% static 'style/revolution/navigation.css' %}"/> 
+				<link rel="stylesheet" type="text/css" href="{% static 'style/base.css' %}"/> 
+				<link rel="stylesheet" type="text/css" href="{% static 'style/responsive.css' %}"/> 
+				
+				<script type="text/javascript" src="{% static 'script/jquery.min.js' %}"></script>
+
+			</head>
+
+			<body class="template-page-home">
+			{% include 'header.html' %}
+			{% include 'js.html' %}
+				
+					
+					
+					
+					
+					
+					
+					
+					<div class="template-section template-section-padding-1 template-clear-fix template-main" style="padding-top:20px !important;padding-bottom:0;">
+						
+						<!-- Features list -->
+						<div class="template-component-feature-list template-component-feature-list-position-left template-clear-fix">
+							
+							<!-- Layout 33x33x33% -->
+							<ul class="template-layout-33x33x33 template-clear-fix">
+								
+								<!-- Left column -->
+								<li class="template-layout-column-left">
+									<span class="template-icon-feature-phone-circle"></span>
+									<h5>Call Us At</h5>
+									<p>
+										(+505) 122 225 225<br/>
+										(+505) 122 225 224<br/>
+									</p>
+								</li>
+								
+								<!-- Center column -->
+								<li class="template-layout-column-center">
+									<span class="template-icon-feature-location-map"></span>
+									<h5>Our Address</h5>
+									<p>
+										464 Rhode Island Av.<br/>
+										Portland, OR 97219
+									</p>
+								</li>
+								
+								<!-- Right column -->
+								<li class="template-layout-column-right">
+									<span class="template-icon-feature-clock"></span>
+									<h5>Working hours</h5>
+									<p>
+										Monday - Friday: 8 am - 6 pm<br/>
+										Saturday: 8 am - 3 pm
+									</p>
+								</li>
+								
+							</ul>
+						</div>
+						
+					</div>
+					
+					<!-- Google Maps -->
+					<div class="template-section template-section-padding-reset template-clear-fix">
+									
+						<!-- Google Map -->
+						<div class="template-component-google-map">
+
+							<!-- Content -->
+							<div class="template-component-google-map-box">
+								<div class="template-component-google-map-box-content"></div>
+							</div>
+
+							<!-- Button -->
+							<a href="#" class="template-component-google-map-button">
+								<span class="template-icon-meta-marker"></span>
+								<span class="template-component-google-map-button-label-show">Show Map</span>
+								<span class="template-component-google-map-button-label-hide">Hide Map</span>
+							</a>
+
+						</div>
+
+						<script type="text/javascript">
+
+							jQuery(document).ready(function()
+							{
+								jQuery('.template-component-google-map').templateGoogleMap(
+								{
+									coordinate		:
+									{
+										lat			:	'-37.823952',
+										lng			:	'144.958766'
+									},
+									dimension		:
+									{
+										width		:	'100%',
+										height		:	'400px'
+									},
+									marker			:	'media/image/map_pointer.png'
+								});
+							});
+
+						</script>					
+					
+					</div>
+					
+				</div>
+				
+				
+
+								
+				
+
+		

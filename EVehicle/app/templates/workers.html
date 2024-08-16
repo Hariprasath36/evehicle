@@ -1,0 +1,61 @@
+{% include 'base.html' %}
+
+<div class="table-responsive table-responsive-data2">
+    <table class="table table-data2">
+        <thead>
+            <tr>
+                <th>Worker Name</th>
+                <th>Phone Number</th>
+                <th>Email Id</th>
+                <th>DoJ</th>
+                <th>Designation</th>
+                <th>Service Name</th>
+                <th>Address</th>
+                <th>Option</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for form in service_name %}
+            <tr class="tr-shadow">
+                <td>
+                    <span class= " status--process"> {{ form.worker_name }} </span> <br>
+                </td>
+                <td class="desc">{{ form.phone_number }}</td>
+                
+                <td>
+                    <span> {{ form.email}} </span>
+                </td> 
+                <td>
+                    <span> {{ form.doj}} </span>
+                </td>
+                <td>
+                    <span> {{ form.designation}} </span>
+                </td>
+                <td>
+                    <span> {{ form.service_id}} </span>
+                </td>  
+                <td>
+                    <span> {{ form.permanent_address}} </span>
+                </td>                                               
+                <td>
+                    <div class="table-data-feature">
+                        <a  href="{% url 'edit_worker' pk=form.id %}" class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                            <i class="zmdi zmdi-edit"></i>
+                        </a>
+                        <a href="{% url 'delete_worker' pk=form.id %}" onlick="return confirm('Are you sure want to delete')" onclick="return confirm('Are you sure you want to delete this item?');" 
+                         class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                            <i class="zmdi zmdi-delete"></i>
+                        </a>
+                         
+                    {% if request.GET.id %}<a href="{% url 'allocate_worker' pk=form.id%}?query_id={{request.GET.id}}" class="btn btn-info"> Allocate 
+                        </a>{% endif %}
+                    </div> 
+                </td>
+            </tr>
+            {% empty %}
+            <tr class=" alert alert-danger "> No Workers </tr>
+            {% endfor %} 
+        </tbody>
+    </table>
+</div>
+{% include 'footer.html' %}

@@ -1,0 +1,45 @@
+{% include 'base.html' %}
+
+<div class="table-responsive table-responsive-data2">
+    <table class="table table-data2">
+        <thead>
+            <tr>
+                <th>Service Name</th>
+                <th>price</th>
+                <th>Description</th>
+                <th>Option</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for form in service_name %}
+            <tr class="tr-shadow">
+                <td>
+                    <span class= " status--process"> {{ form.service_name }} </span> <br>
+                </td>
+                <td class="desc">{{ form.price }}</td>
+                
+                <td>
+                    <span> {{ form.description}} </span>
+                </td>                                                
+                <td>
+                    <div class="table-data-feature">
+                        {% comment %} <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Send">
+                            <i class="zmdi zmdi-mail-send"></i>
+                        </button> {% endcomment %}
+                        <a  href="{% url 'edit_service' pk=form.id %}" class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                            <i class="zmdi zmdi-edit"></i>
+                        </a>
+                        <a href="{% url 'delete_service' pk=form.id %}" onlick="return confirm('Are you sure want to delete')" onclick="return confirm('Are you sure you want to delete this item?');" 
+                         class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                            <i class="zmdi zmdi-delete"></i>
+                        </a>
+                    </div> 
+                </td>
+            </tr>
+            {% empty %}
+            <tr class=" alert alert-danger "> No Services </tr>
+            {% endfor %} 
+        </tbody>
+    </table>
+</div>
+{% include 'footer.html' %}

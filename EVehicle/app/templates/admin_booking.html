@@ -1,0 +1,63 @@
+{% include 'base.html' %}
+
+<div class="table-responsive table-responsive-data2">
+    <table class="table table-data2">
+        <thead>
+            <tr>
+                <th>EBunk Name</th>
+                <th>Type of Battery</th>
+                <th>Battery Detail</th>
+                <th>Slot No</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Slot Status</th>
+                <th>notes</th>
+                <th>Payment Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for form in form %}
+            <tr class="tr-shadow">
+                <td>
+                    <span class= " status--process"> {{ form.bunk_id }} </span> <br>
+                </td>
+                <td class="desc">{{ form.type_of_battery }}</td>
+                
+                <td>
+                    <span> {{ form.battery_details}} </span>
+                </td> 
+                <td>
+                    <span> {{ form.slot_id}} </span>
+                </td> 
+                <td>
+                    <span> {{ form.date}} </span>
+                </td> 
+                <td>
+                    <span> {{ form.time}} </span>
+                </td> 
+                <td>
+                    {% if form.status == 'Pending' %}
+                   <div> <a href="{% url 'accept' pk=form.id %}" class="btn btn-success">Accept</a></div><br><div> <a href="{% url 'reject' pk=form.id %}" class="btn btn-danger">Reject</a></div>
+                     {% elif form.status == 'Approved' %}
+                    <span class="badge badge-success"> {{ form.status}} </span>
+                     {% elif form.status == 'Rejected' %}
+                    <span class="badge badge-danger"> {{ form.status}} </span>
+                    {% endif %}
+                </td> 
+                <td>
+                    <span> {{ form.notes}} </span>
+                </td>
+                {% if form.status == 'Approved' %}
+                  <td>
+                    <span> <a href="{% url 'payment_status' pk=form.id %}" class="fa fa-edit">Payment</a></span>
+                   <div class="badge badge-warning"> {{form.amount }} & {{form.payment_status }}</div>
+                 </td>                                              
+               {% endif %}
+            </tr>
+            {% empty %}
+            <tr class=" alert alert-danger "> No Bookings </tr>
+            {% endfor %} 
+        </tbody>
+    </table>
+</div>
+{% include 'footer.html' %}

@@ -1,0 +1,28 @@
+{% include 'public_header.html' %}
+<div class="card">
+
+    <div class="card-body">
+        <div class="card-title">
+            <h3 class=" title-2" style="padding-bottom:30px;">Available Slots </h3>
+        </div>
+       
+        {% if messages %}
+            {% for i in messages %}
+                <div class="alert alert-success">{{i}}</div>
+            {% endfor %}
+        {% endif %}
+        <form action="{% url 'slot_detail' %}" method="get" novalidate="novalidate">  {% csrf_token %}
+            {% for i in ids %}
+                <input   name="slot" type="radio"   value="{{i.id}}"> {{i.slot_name}} 
+            
+            {% endfor %}
+                 <input   name="bunk_id" type="hidden"   value="{{request.GET.id}}"> 
+            
+            <div>
+               <input type="submit"  value="Book Now" class="btn btn-info " style="padding: 10px;font-size: 15px;margin-top: 20px;">
+            </div>
+        </form>
+        
+    </div>
+</div>
+{% include 'footer.html'%}

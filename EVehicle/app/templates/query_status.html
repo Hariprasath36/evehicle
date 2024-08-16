@@ -1,0 +1,72 @@
+{% include 'Worker_header.html' %}
+ {% if messages %}
+            {% for i in messages %}
+                <div class="alert alert-success">{{i}}</div>
+            {% endfor %}
+        {% endif %}
+<div class="table-responsive table-responsive-data2">
+    <table class="table table-data2">
+        <thead>
+            <tr>
+                <th>Public Name</th>
+                <th>Phone Number</th>
+                <th>Location</th>
+                <th>Vehichle Model</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Message</th>
+                <th>Payment</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for form in ids %}
+            <tr class="tr-shadow">
+                <td class="desc">{{ form.complain_id.public_id.username }}</td>
+                
+                <td>
+                    <span> {{ form.complain_id.public_id.phone_number}} </span>
+                </td> 
+                <td>
+                    <span> {{ form.complain_id.addr}} </span>
+                </td> 
+                <td>
+                    <span> {{ form.complain_id.v_type}} </span>
+                </td> 
+                <td>
+                    <span> {{ form.complain_id.date}} </span>
+                </td>                                                
+                <td>
+                    {% if form.status == 'send' %}
+                    <div class="table-data-feature">
+                       <a href="{% url 'update_work_status' pk=form.id %}" class="btn btn-success"> Update Status 
+                        </a>
+                    {% elif form.status == 'pending' %}
+                        <a href="{% url 'update_work_status' pk=form.id %}" class="btn btn-danger"> Work Pending 
+                        </a>
+                    {% elif form.status == 'finish' %}
+                        <input type="submit" class="btn btn-warning disabled" value="Finished Work">
+                    {% endif %}
+                   
+                </td>
+                <td> {% if form.msg == '' %}
+                        <p>No Msg</p>
+                    {% else %}
+                        <p>{{form.msg}}</p>
+                    {% endif %}
+                    </td>
+                <td> {% if form.payment == '' %}
+                        <span style="color: orange;">Waiting for Payment</span>
+                    {% elif form.payment == 'paid' %}
+                         <span style="color: green;">Paid</span>
+                    {% elif form.payment == 'notpaid' %}
+                         <span style="color: red;">Not Paid</span>
+                    {% endif %}
+                    </td>
+            </tr>
+            {% empty %}
+            <tr class=" alert alert-danger "> No Queries </tr>
+            {% endfor %} 
+        </tbody>
+    </table>
+</div>
+{% include 'footer.html' %}

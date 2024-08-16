@@ -1,0 +1,61 @@
+{% include 'public_header.html' %}
+
+<div class="table-responsive table-responsive-data2">
+    <table class="table table-data2">
+        <thead>
+            <tr>
+                <th>EBunk Name</th>
+                <th>Type of Battery</th>
+                <th>Battery Detail</th>
+                <th>Slot No</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Slot Status</th>
+                <th>notes</th>
+                <th>Payment Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for form in form %}
+            <tr class="tr-shadow">
+                <td>
+                    <span class= " status--process"> {{ form.bunk_id }} </span> <br>
+                </td>
+                <td class="desc">{{ form.type_of_battery }}</td>
+                
+                <td>
+                    <span> {{ form.battery_details}} </span>
+                </td> 
+                <td>
+                    <span> {{ form.slot_id}} </span>
+                </td> 
+                <td>
+                    <span> {{ form.date}} </span>
+                </td> 
+                <td>
+                    <span> {{ form.time}} </span>
+                </td> 
+                <td>
+                    {% if form.slot_status == 'Pending' %}
+                    <span class="badge badge-warning"> {{ form.slot_status}} </span>
+                     {% elif form.slot_status == 'Approved' %}
+                    <span class="badge badge-success"> {{ form.slot_status}} </span>
+                     {% elif form.slot_status == 'Rejected' %}
+                    <span class="badge badge-danger"> {{ form.slot_status}} </span>
+                    {% endif %}
+                </td> 
+                <td>
+                    <span> {{ form.notes}} </span>
+                </td>
+                  <td>
+                    <span> {{ form.amount}} & {{form.payment_status}}</span>
+                </td>                                              
+               
+            </tr>
+            {% empty %}
+            <tr class=" alert alert-danger "> No Bookings </tr>
+            {% endfor %} 
+        </tbody>
+    </table>
+</div>
+{% include 'footer.html' %}

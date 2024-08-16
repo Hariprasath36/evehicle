@@ -1,0 +1,44 @@
+{% include 'base.html' %}
+<div class="card">
+
+    <div class="card-body">
+        <div class="card-title">
+            <h3 class=" title-2">Update Payment Status</h3>
+        </div>
+       
+        {% if messages %}
+            {% for i in messages %}
+                <div class="alert alert-success">{{i}}</div>
+            {% endfor %}
+        {% endif %}
+        {% for i in ids %}
+        <form action="" method="post" novalidate="novalidate">  {% csrf_token %}
+         
+          <div class="form-group ">
+                <label  class="control-label mb-1">Amount<span style="color: red;">*</span></label>
+                <input type="text" name="amount" class="form-control" value="{{i.amount}}">
+                
+            </div>
+            <div class="form-group ">
+                <label  class="control-label mb-1">Status<span style="color: red;">*</span></label>
+                <select name="payment_status" class="form-control">
+                    <option value="">Update Status</option>
+                    <option value="paid" >Paid</option>
+                    <option value="notpaid">Not Paid</option>
+                </select> 
+                
+            </div>
+            <div class="form-group">
+                <label  class="control-label mb-1">Notes <span style="color: red;">*</span></label>
+                <textarea name="msg" class="form-control">{{i.notes}}</textarea>
+                
+            </div>
+            {% endfor %}
+            <div>
+               <input type="submit"  value="Update Status" class="btn btn-info " style="padding: 10px;font-size: 15px;">
+            </div>
+           
+        </form>
+    </div>
+</div>
+{% include 'footer.html'%}

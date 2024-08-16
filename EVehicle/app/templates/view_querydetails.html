@@ -1,0 +1,63 @@
+{% include 'base.html' %}
+ {% if messages %}
+            {% for i in messages %}
+                <div class="alert alert-success">{{i}}</div>
+            {% endfor %}
+        {% endif %}
+<div class="table-responsive table-responsive-data2">
+    <table class="table table-data2">
+        <thead>
+            <tr>
+                <th>Public Name</th>
+                <th>Phone Number</th>
+                <th>Vehicle Type</th>
+                <th>Vehicle Model</th>
+                <th>Location</th>
+                <th>Message</th>
+                <th>Date</th>
+                <th>Option</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for form in row %}
+            <tr class="tr-shadow">
+                <td>
+                    <span class= " status--process"> {{ form.1 }} </span> 
+                </td>
+                <td class="desc">{{ form.2 }}</td>
+                
+                <td>
+                    <span> {{ form.3}} </span>
+                </td> 
+                <td>
+                    <span> {{ form.4}} </span>
+                </td> 
+                <td>
+                    <span> {{form.5}} </span>
+                </td> 
+                <td>
+                    <span> {{ form.6}} </span>
+                </td>   
+                <td>
+                    <span> {{ form.7}} </span>
+                </td>
+                <td>
+                    {% if form.8 == 'send' %}
+                        <input type="submit" class="btn btn-warning disabled" value="Mechanic Allocated" >
+                     {% elif form.8 == 'finish' %}
+                        <input type="submit" class="btn btn-primary disabled" value="Finished Worker" >
+                    {% elif form.8 == 'pending' %}
+                        <input type="submit" class="btn btn-danger disabled" value="Work Pending" >
+                    {% else %}
+                        <a href="{% url 'workers' %}?id={{form.0}}" class="btn btn-success">Allocate Mechanic</a>
+                    {% endif %}
+                    
+                </td>
+            </tr>
+            {% empty %}
+            <tr class=" alert alert-danger "> No Request </tr>
+            {% endfor %} 
+        </tbody>
+    </table>
+</div>
+{% include 'footer.html' %}
