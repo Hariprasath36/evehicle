@@ -9,3 +9,4 @@ python3 manage.py runserver
 
 Django
 python3
+Django-jazzmin
