@@ -18,5 +18,3 @@ urlpatterns = [
     path('reject/<int:pk>/',views.reject,name='reject'),
     path('payment_status/<int:pk>/',views.payment_status,name='payment_status'),
 ]
-
-hjgdja
