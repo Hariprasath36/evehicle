@@ -5,3 +5,5 @@ admin.site.register(Public_Detail)
 admin.site.register(Slot_Detail)
 admin.site.register(Booking)
 
+
+sjjkf
